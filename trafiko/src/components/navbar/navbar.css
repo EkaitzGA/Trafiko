@@ -1,10 +1,32 @@
-.navBarContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+*{
+    margin: 0;
+    padding: 0;
 }
-.navBarList{
-    display:flex;
+.navBarContainer {
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    padding-left: 2rem;
+    background-color: rgb(35, 31, 32);
+    padding: 2rem;
+}
+.navBar{
+    height: 100%;
+    padding-right: 3rem;
+}
+.navBarList {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    cursor: pointer;
+    color: gold;
+    list-style-type: none;
+}
+a{
+    color: lightgray;
+    text-decoration: none;
+}
+a:hover{
+    color: lightblue;
 }

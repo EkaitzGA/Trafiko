@@ -9,6 +9,7 @@ async function fetchData(route, searchParams= {}) {
         }
 
         const response = await fetch(url);
+        console.log(url);
         const responseData = await response.json();
         return responseData
     } catch (error) {
@@ -16,7 +17,14 @@ async function fetchData(route, searchParams= {}) {
         return {error: error};
     }
 }
-const route = "incidences";
-const searchParams = {limit: 10};
-const call = await fetchData(route, searchParams);
 
+export {fetchData};
+
+const params = {
+    sourceId: 5,
+    _page: 5
+  };
+  const route = "incidences";
+
+  const response = await fetchData(route, params);
+  console.log(response);
