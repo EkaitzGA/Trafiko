@@ -1,5 +1,2 @@
-import{fetchData} from "../../utils/apiCalls"
-function TextSlider({children}){
-    
-
-}
+import React from 'react';
+import {CleanedDataForTextSliderFromTheApiCall} from './apiCall-textSlider'
