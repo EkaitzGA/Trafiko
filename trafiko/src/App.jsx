@@ -9,9 +9,13 @@ export default function App() {
     return (
         <div>
             <NavBar />
+features/navBar
+            
+
             <Form />
             <Button />
             <Footer />
+
 
         </div>
     )
