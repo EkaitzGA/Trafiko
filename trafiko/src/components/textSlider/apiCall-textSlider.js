@@ -54,7 +54,6 @@ async function CleanedDataForTextSliderFromTheApiCall() {
     const data = await fetchIncidences(page);
     finalResponse = finalResponse.concat(data);
     page++;
-    console.log(page)
   }
 
   return finalResponse
