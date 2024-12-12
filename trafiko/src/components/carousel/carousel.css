@@ -1,0 +1,105 @@
+/* Contenedor principal del carrusel */
+.carousel-container {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Contenedor que mantiene el carrusel alineado */
+.carousel-inner {
+  position: relative;
+}
+
+/* Estilos para los botones de navegación */
+.carousel-button {
+  position: absolute;
+  z-index: 10;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.2s;
+}
+
+.carousel-button:hover {
+  background-color: #f3f4f6;
+}
+
+.carousel-button-prev {
+  left: 0;
+}
+
+.carousel-button-next {
+  right: 0;
+}
+
+/* Contenedor de las slides */
+.carousel-slides-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Wrapper para las slides con animación */
+.carousel-slides-wrapper {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Estilos para cada slide individual */
+.carousel-slide {
+  width: 100%;
+  min-width: calc(33.333% - 1rem);
+}
+
+/* Contenedor de la tarjeta de la cámara */
+.camera-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: fit-content;
+}
+
+/* Contenedor de la imagen */
+.camera-image-container {
+  width: fit-content;
+  height: fit-content;
+}
+
+/* Estilos de la imagen */
+.camera-image {
+  display: block;
+  max-width: 300px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Contenedor del texto */
+.camera-info {
+  padding: 0.75rem;
+  /* Reducido el padding para hacer más compacto */
+}
+
+/* Título de la cámara */
+.camera-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  /* Reducido el margen inferior */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Texto de la carretera */
+.camera-road {
+  font-size: 0.875rem;
+  color: #4b5563;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

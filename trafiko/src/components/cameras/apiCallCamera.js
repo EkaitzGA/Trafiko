@@ -28,11 +28,15 @@ export async function apiDataClean(currentPage = 1) {
   }
 
   const cleanedData = data.cameras.filter(item => item.urlImage && item.urlImage.trim() !== '').map((item) => ({
+    cameraId: item.cameraId,
     cameraName: item.cameraName,
     road: item.road,
     address: item.address,
-    urlImage: item.urlImage
+    urlImage: item.urlImage,
+    latitude: item.latitude,
+    longitude: item.longitude
   }));
+  console.log(cleanedData)
   return cleanedData
 
 }
