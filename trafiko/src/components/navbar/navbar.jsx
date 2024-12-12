@@ -12,7 +12,7 @@ export default function NavBar() {
             <a href="#">Incidencias</a>
           </li>
           <li className="navBarAssets">
-            <a href="#">Contacto</a>
+            <a href="#">Cámaras de tráfico</a>
           </li>
           <li className="navBarAssets">
             <a href="#">Acerca de</a>
