@@ -56,38 +56,40 @@
 .camera-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
   background-color: white;
   border-radius: 0.5rem;
   overflow: hidden;
+  width: fit-content;
 }
 
-/* Contenedor de la imagen con ratio de aspecto fijo */
+/* Contenedor de la imagen */
 .camera-image-container {
-  position: relative;
-  padding-top: 56.25%;
-  /* 16:9 Aspect Ratio */
+  width: fit-content;
+  height: fit-content;
 }
 
 /* Estilos de la imagen */
 .camera-image {
-  position: absolute;
-  inset: 0;
-  max-width: 300px !important;
-  max-height: 200px !important;
+  display: block;
+  max-width: 300px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
 /* Contenedor del texto */
 .camera-info {
-  padding: 1rem;
+  padding: 0.75rem;
+  /* Reducido el padding para hacer más compacto */
 }
 
 /* Título de la cámara */
 .camera-title {
   font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  /* Reducido el margen inferior */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
