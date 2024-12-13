@@ -3,49 +3,41 @@ class TextSliderCanvas {
     constructor(apiDataFunction, options = {}) {
         // Configuraciones por defecto
         this.options = {
-            height: 50,
-            backgroundColor: 'rgba(240,240,240,0.8)',
+            height: 15,
             fontSize: 16,
             fontFamily: 'Arial, sans-serif',
-            textColor: 'white',
+            textColor: 'rgba(210, 250, 255, 0.8)',
             speed: 1, // Reducir velocidad
             textSpacing: 600, // Aumentar espacio entre textos
             ...options
         };
-
+    
         // Crear el canvas
         this.canvas = document.createElement('canvas');
+        //Añadir id al canvas
+        this.canvas.id = 'text-slider-canvas';
         this.ctx = this.canvas.getContext('2d');
-
-        // Configurar estilos del canvas
-        this.canvas.style.position = 'fixed';
-        this.canvas.style.bottom = '0';
-        this.canvas.style.left = '0';
-        this.canvas.style.width = '100%';
-        this.canvas.style.height = `${this.options.height}px`;
-        this.canvas.style.backgroundColor = this.options.backgroundColor;
-        this.canvas.style.zIndex = '1000';
-
+    
         // Añadir al body
         document.body.appendChild(this.canvas);
-
+    
         this.apiDataFunction = apiDataFunction;
         this.texts = [];
         this.textPositions = [];
-
+    
         // Configuraciones de texto
         this.fontSize = this.options.fontSize;
         this.fontFamily = this.options.fontFamily;
         this.textColor = this.options.textColor;
         this.speed = this.options.speed;
         this.textSpacing = this.options.textSpacing;
-
+    
         // Ajustar el tamaño del canvas
         this.resizeCanvas();
-
+    
         // Escuchar cambios de tamaño de ventana
         window.addEventListener('resize', this.resizeCanvas.bind(this));
-
+    
         this.init();
     }
 
