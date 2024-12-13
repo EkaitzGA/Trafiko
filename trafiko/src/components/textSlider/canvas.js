@@ -4,7 +4,7 @@ class TextSliderCanvas {
         // Configuraciones por defecto
         this.options = {
             height: 15,
-            fontSize: 16,
+            fontSize: 10,
             fontFamily: 'Arial, sans-serif',
             textColor: 'rgba(210, 250, 255, 0.8)',
             speed: 1, // Reducir velocidad
