@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './carousel.css';
 
 const CameraCarousel = ({ cameraData, onImageClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(3);
-
-  useEffect(() => {
-    const updateItemsPerView = () => {
-      if (window.innerWidth < 640) {
-        setItemsPerView(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerView(2);
-      } else {
-        setItemsPerView(3);
-      }
-    };
-
-    updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
-  }, []);
+  const itemsPerView = 3;
 
   const nextSlide = () => {
     const maxIndex = Math.max(0, Math.ceil(cameraData.length / itemsPerView) - 1);
@@ -38,11 +22,6 @@ const CameraCarousel = ({ cameraData, onImageClick }) => {
   const canGoNext = currentIndex < Math.ceil(cameraData.length / itemsPerView) - 1;
   const canGoPrev = currentIndex > 0;
   const showNavigation = cameraData.length > itemsPerView;
-
-  const visibleCameras = cameraData.slice(
-    currentIndex * itemsPerView,
-    (currentIndex * itemsPerView) + itemsPerView
-  );
 
   const handleImageClick = (camera, e) => {
     e.preventDefault();

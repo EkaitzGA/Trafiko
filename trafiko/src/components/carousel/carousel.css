@@ -9,8 +9,8 @@
   position: relative;
   padding: 0 2.5rem;
   width: 100%;
-  max-width: 1200px; /* Limita el ancho máximo del carrusel */
-  margin: 0 auto; /* Centra el carrusel */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .carousel-slides-container {
@@ -38,8 +38,6 @@
   border-radius: 0.5rem;
   overflow: hidden;
   width: 100%;
-  max-width: 300px; /* Limita el ancho máximo de cada tarjeta */
-  margin: 0 auto;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -51,8 +49,7 @@
 .camera-image-container {
   position: relative;
   width: 100%;
-  max-width: 300px; /* Limita el ancho máximo del contenedor de la imagen */
-  padding-top: 200px; /* Altura fija en lugar de ratio */
+  padding-top: 66.67%; /* Mantiene ratio 3:2 */
   overflow: hidden;
   border-radius: 4px;
 }
@@ -67,17 +64,13 @@
   transition: transform 0.3s ease;
 }
 
-.camera-card:hover .camera-image {
-  transform: scale(1.05);
-}
-
 .camera-info {
   padding: 0.75rem;
   width: 100%;
 }
 
 .camera-title {
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
   white-space: nowrap;
@@ -86,7 +79,7 @@
 }
 
 .camera-road {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #4b5563;
   white-space: nowrap;
   overflow: hidden;
@@ -118,34 +111,16 @@
   right: 0;
 }
 
-@media (max-width: 1024px) {
-  .carousel-slide {
-    flex: 0 0 calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
-  }
-  
-  .camera-card,
-  .camera-image-container {
-    max-width: 250px; /* Reduce el tamaño máximo en tablets */
-  }
-  
-  .camera-image-container {
-    padding-top: 166px; /* Ajusta la altura proporcionalmente */
-  }
-}
-
 @media (max-width: 640px) {
-  .carousel-slide {
-    flex: 0 0 calc(100% - 1rem);
-    max-width: calc(100% - 1rem);
+  .carousel-inner {
+    padding: 0 1.5rem;
   }
   
-  .camera-card,
-  .camera-image-container {
-    max-width: 200px; /* Reduce aún más el tamaño en móviles */
+  .camera-title {
+    font-size: 0.75rem;
   }
   
-  .camera-image-container {
-    padding-top: 133px; /* Ajusta la altura proporcionalmente */
+  .camera-road {
+    font-size: 0.675rem;
   }
 }
