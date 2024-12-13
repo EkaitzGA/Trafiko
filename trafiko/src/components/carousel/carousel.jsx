@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {Carousel} from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './carousel.css';
 
-const CameraCarousel = ({ cameraData, onImageClick}) => {
+const CameraCarousel = ({ cameraData, onImageClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
 
-  // Actualizar itemsPerView basado en el ancho de la ventana
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < 640) {
@@ -25,31 +22,27 @@ const CameraCarousel = ({ cameraData, onImageClick}) => {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
-  // Asegurarse de que currentIndex es válido cuando cambia itemsPerView
-  useEffect(() => {
-    const maxIndex = Math.max(0, cameraData.length - itemsPerView);
-    if (currentIndex > maxIndex) {
-      setCurrentIndex(maxIndex);
-    }
-  }, [itemsPerView, cameraData.length, currentIndex]);
-
   const nextSlide = () => {
-    const maxIndex = Math.max(0, cameraData.length - itemsPerView);
-    setCurrentIndex(current => Math.min(current + itemsPerView, maxIndex));
+    const maxIndex = Math.max(0, Math.ceil(cameraData.length / itemsPerView) - 1);
+    setCurrentIndex(current => Math.min(current + 1, maxIndex));
   };
 
   const prevSlide = () => {
-    setCurrentIndex(current => Math.max(0, current - itemsPerView));
+    setCurrentIndex(current => Math.max(0, current - 1));
   };
 
   if (!cameraData || cameraData.length === 0) {
     return null;
   }
 
-  // Mostrar flechas solo si hay más items que los visibles
-  const canGoNext = currentIndex < cameraData.length - itemsPerView;
+  const canGoNext = currentIndex < Math.ceil(cameraData.length / itemsPerView) - 1;
   const canGoPrev = currentIndex > 0;
   const showNavigation = cameraData.length > itemsPerView;
+
+  const visibleCameras = cameraData.slice(
+    currentIndex * itemsPerView,
+    (currentIndex * itemsPerView) + itemsPerView
+  );
 
   const handleImageClick = (camera, e) => {
     e.preventDefault();
@@ -75,22 +68,17 @@ const CameraCarousel = ({ cameraData, onImageClick}) => {
           <div 
             className="carousel-slides-wrapper"
             style={{
-              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-              width: `${(100 * cameraData.length) / itemsPerView}%`,
+              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`
             }}
           >
             {cameraData.map((camera, index) => (
               <div
                 key={camera.cameraId}
                 className="carousel-slide"
-                style={{
-                  flex: `0 0 calc(${100 / itemsPerView}% - 0.67rem)`,
-                  marginRight: index === cameraData.length - 1 ? '0' : undefined
-                }}
               >
                 <div 
-                className="camera-card"
-                onClick={(e) => handleImageClick(camera, e)}
+                  className="camera-card"
+                  onClick={(e) => handleImageClick(camera, e)}
                 >
                   <div className="camera-image-container">
                     <img
