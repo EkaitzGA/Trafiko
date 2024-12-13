@@ -3,3 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    /*Grid areas for the body. The canvas must go on top*/
+    display: grid;
+    grid-template-areas: "canvas" "root";
+    grid-template-rows: 45px 1fr;
+    grid-template-columns: 1fr;
+    height: 1000vh
+}
+#root{
+    grid-area: root;
+}
+canvas {
+    grid-area: canvas;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px; /* Use the height option value here */
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 1000;
+}

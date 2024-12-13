@@ -1,15 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 .navBarContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content:space-between;
-    padding-left: 2rem;
     background-color: rgb(35, 31, 32);
-    padding: 2rem;
+    padding: 1rem;
 }
 .navBar{
     height: 100%;
@@ -20,7 +16,6 @@
     flex-direction: row;
     gap: 2rem;
     cursor: pointer;
-    color: gold;
     list-style-type: none;
 }
 a{
