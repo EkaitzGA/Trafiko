@@ -7,17 +7,22 @@
 /* Contenedor que mantiene el carrusel alineado */
 .carousel-inner {
   position: relative;
+  padding: 0 2.5rem;
+  /* Espacio para los botones */
 }
 
 /* Estilos para los botones de navegación */
 .carousel-button {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 10;
   padding: 0.5rem;
   background-color: white;
   border-radius: 9999px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .carousel-button:hover {
@@ -39,33 +44,38 @@
   overflow: hidden;
 }
 
-/* Wrapper para las slides con animación */
 .carousel-slides-wrapper {
   display: flex;
   gap: 1rem;
   transition: transform 0.3s ease-in-out;
 }
 
-/* Estilos para cada slide individual */
 .carousel-slide {
-  width: 100%;
-  min-width: calc(33.333% - 1rem);
+  display: flex;
+  justify-content: center;
 }
 
-/* Contenedor de la tarjeta de la cámara */
 .camera-card {
-  display: flex;
+  display: inline-flex;
+  /* Cambiado a inline-flex */
   flex-direction: column;
   background-color: white;
   border-radius: 0.5rem;
   overflow: hidden;
   width: fit-content;
+  /* Ajustado para que se adapte al contenido */
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
-
+.camera-card:hover {
+  transform: scale(1.02);
+}
 /* Contenedor de la imagen */
 .camera-image-container {
   width: fit-content;
   height: fit-content;
+  overflow: hidden;
+    border-radius: 4px;
 }
 
 /* Estilos de la imagen */
@@ -76,12 +86,17 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.camera-card:hover .camera-image {
+  transform: scale(1.05);
 }
 
 /* Contenedor del texto */
 .camera-info {
   padding: 0.75rem;
-  /* Reducido el padding para hacer más compacto */
+  width: 100%;
 }
 
 /* Título de la cámara */
@@ -89,7 +104,6 @@
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
-  /* Reducido el margen inferior */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
