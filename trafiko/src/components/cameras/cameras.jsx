@@ -8,6 +8,7 @@ function CameraMap() {
     const [cameraData, setCameraData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedCamera, setSelectedCamera] = useState(null);
+    const [showLargeImage, setShowLargeImage] = useState(false);
     const totalPages = 8;
 
     const convertUTMtoLatLng = (northing, easting) => {
@@ -98,7 +99,10 @@ function CameraMap() {
             setSelectedCamera(null); // Limpiar la cámara seleccionada
         }
     };
-
+    const handleImageClick = (camera) => {
+        setSelectedCamera(camera);
+        setShowLargeImage(true);
+    };
     return (
         <div className="cameras-container">
             <div className="button-container">
@@ -125,7 +129,31 @@ function CameraMap() {
 
             {cameraData.length > 0 ? (
                 <div className="content-container">
-                    <CameraCarousel cameraData={cameraData} />
+                    <CameraCarousel
+                        cameraData={cameraData}
+                        onImageClick={handleImageClick}
+                    />
+
+                    {showLargeImage && selectedCamera && (
+                        <div className="large-image-container">
+                            <button
+                                onClick={() => setShowLargeImage(false)}
+                                className="close-button"
+                            >
+                                ✕
+                            </button>
+                            <img
+                                src={selectedCamera.urlImage}
+                                alt={selectedCamera.cameraName}
+                                className="large-camera-image"
+                            />
+                            <div className="camera-info">
+                                <h3>{selectedCamera.cameraName}</h3>
+                                <p><strong>Carretera:</strong> {selectedCamera.road}</p>
+                                <p><strong>Dirección:</strong> {selectedCamera.address}</p>
+                            </div>
+                        </div>
+                    )}
                     <div className="map-container">
                         <MapContainer
                             center={[43.26271, -2.92528]}
@@ -145,7 +173,7 @@ function CameraMap() {
                                             key={camera.cameraId}
                                             position={latLng}
                                             eventHandlers={{
-                                                click: () => setSelectedCamera(camera)
+                                                click: () => handleImageClick(camera)
                                             }}
                                         >
                                             <Popup>
@@ -161,25 +189,6 @@ function CameraMap() {
                                     ) : null;
                                 })}
                         </MapContainer>
-                    </div>
-
-                    <div className="camera-details">
-                        {selectedCamera ? (
-                            <div className="selected-camera">
-                                <h3 className="camera-title">{selectedCamera.cameraName}</h3>
-                                <p><strong>Carretera:</strong> {selectedCamera.road}</p>
-                                <p><strong>Dirección:</strong> {selectedCamera.address}</p>
-                                <img
-                                    src={selectedCamera.urlImage}
-                                    alt={selectedCamera.cameraName}
-                                    className="camera-image"
-                                />
-                            </div>
-                        ) : (
-                            <div className="no-camera-selected">
-                                Selecciona un marcador en el mapa para ver la imagen de la cámara
-                            </div>
-                        )}
                     </div>
                 </div>
             ) : (
