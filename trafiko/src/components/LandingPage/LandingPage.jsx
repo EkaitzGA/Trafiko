@@ -6,6 +6,7 @@ const LandingPage = () => {
   return (
     <>
       <h1>BIENVENIDOS A TRAFIKO</h1>
+      <h1>Tu web para consultar las incidencias de tráfico de Bizkaia</h1>
       <section className="main-page-section">
         <Link to="/cameras" className="image-container">
           <img
@@ -23,6 +24,7 @@ const LandingPage = () => {
           />
           <div className="image-text">Incidencias</div>
         </Link>
+      
       </section>
     </>
   );

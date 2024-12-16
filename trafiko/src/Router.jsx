@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./components/Root/Root";
-import Cameras from "./components/cameras/cameras";
+import Cameras from "./components/cameras/mainCameraComponent";
 import Incidences from "./components/incidences/Incidences";
 
 const router = createBrowserRouter([
