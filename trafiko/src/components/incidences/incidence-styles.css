@@ -1,0 +1,86 @@
+/* Estilos para las incidencias de tráfico */
+.incidences-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.incidences-container > h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    border-bottom: 2px solid #4a4a4a;
+    padding-bottom: 15px;
+}
+
+/* Estilos para cada incidencia individual */
+.incidences-container > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.incident-card {
+    background-color: #f9f9f9;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.incident-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.incident-card h3 {
+    margin-top: 0;
+    color: #007bff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.incident-card p {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Estilos para cuando no hay incidencias */
+.incidences-container p:only-child {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+/* Estilos de carga y error */
+.incidences-container > div:first-child {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+/* Estilos responsive */
+@media (max-width: 600px) {
+    .incidences-container {
+        padding: 10px;
+    }
+
+    .incidences-container > div {
+        gap: 15px;
+    }
+
+    .incident-card {
+        padding: 15px;
+    }
+}

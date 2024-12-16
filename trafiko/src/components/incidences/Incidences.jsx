@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {CleanedDataForIncidencesFromTheApiCall} from "./incidences-apiCall"
+import "./incidence-styles.css"
 // Main Component to Fetch and Display Incidents
 const TrafficIncidents = () => {
   const [incidents, setIncidents] = useState([]);
@@ -30,32 +31,32 @@ const TrafficIncidents = () => {
   }
 
   return (
-    <div>
+    <section className="incidences-container">
       <h1>Incidencias de Tráfico en Bizkaia</h1>
       {incidents.length === 0 ? (
         <p>No hay incidencias</p>
       ) : (
-        <ul>
+        <div>
           {incidents.map((incident, index) => (
             <IncidentItem key={index} incident={incident} />
           ))}
-        </ul>
+        </div>
       )}
-    </div>
+    </section>
   );
 };
 
 // Individual Incident Item Component
 const IncidentItem = ({ incident }) => {
   return (
-    <li>
-      <div>Tipo de Incidencia: {incident.incidenceType}</div>
-      <div>Provincia: {incident.province}</div>
-      <div>Causa: {incident.cause}</div>
-      <div>Fecha de Inicio: {new Date(incident.startDate).toLocaleString()}</div>
-      <div>Carretera: {incident.road}</div>
-      <div>Dirección: {incident.direction}</div>
-    </li>
+    <div className="incident-card">
+      <h3>{incident.incidenceType}</h3>
+      <p>Provincia: {incident.province}</p>
+      <p>Causa: {incident.cause}</p>
+      <p>Fecha de Inicio: {new Date(incident.startDate).toLocaleString()}</p>
+      <p>Carretera: {incident.road}</p>
+      <p>Dirección: {incident.direction}</p>
+    </div>
   );
 };
 
