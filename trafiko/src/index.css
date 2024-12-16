@@ -36,15 +36,3 @@ canvas {
   background-color: rgba(0, 0, 0, 1);
   z-index: 1000;
 }
-
-header {
-  grid-area: nav;
-}
-
-main {
-  grid-area: content;
-}
-
-footer {
-  grid-area: footer;
-}
