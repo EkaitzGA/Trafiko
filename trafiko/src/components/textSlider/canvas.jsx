@@ -35,7 +35,7 @@ const TextSlider = ({ apiDataFunction, options = {} }) => {
       );
     }
   };
-
+  
   const animate = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
