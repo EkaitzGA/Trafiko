@@ -5,7 +5,7 @@ function Footer(){
   <div className="footer-container">
     <div className="footer-section">
       <h4>Contacto</h4>
-      <p>Dirección: Calle Ejemplo 123, Ciudad</p>
+      <p>Dirección: Calle Falsa 123, Springfield</p>
       <p>Teléfono: +34 123 456 789</p>
       <p>Email: contacto@ejemplo.com</p>
     </div>
@@ -23,15 +23,15 @@ function Footer(){
     <div className="footer-section">
       <h4>Síguenos</h4>
       <div className="social-icons">
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><img src="facebook-icon.png" alt="Facebook"/></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><img src="twitter-icon.png" alt="Twitter"/></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><img src="instagram-icon.png" alt="Instagram"/></a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><img src="../../assets/facebook.png" alt="Facebook"/></a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><img src="../../assets/twitter.png" alt="Twitter"/></a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><img src="../..//assets/instagram.png" alt="Instagram"/></a>
       </div>
     </div>
   </div>
 
   <div className="footer-bottom">
-    <p>© 2024 Nombre de tu Sitio. Todos los derechos reservados.</p>
+    <p>© 2024 Trafiko. Todos los derechos reservados.</p>
   </div>
         </>
     )}

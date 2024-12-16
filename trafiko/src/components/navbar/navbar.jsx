@@ -4,11 +4,14 @@ export default function NavBar() {
   return (
     <>
       <img
-        src="https://opendata.euskadi.eus/AVComun/images/r01ClaimH_white_es.jpg"
+        src="../../assets/bannerNavbar.png"
         alt=""
       />
       <nav className="navBar">
         <ul className="navBarList">
+        <li className="navBarAssets">
+            <Link to="/">Home</Link>
+          </li>
           <li className="navBarAssets">
             <Link to="/cameras">Cámaras</Link>
           </li>

@@ -62,6 +62,9 @@ footer {
     flex-direction: column;
     /*Center the items in the middle*/
     align-items: center;
+    width: 24px;
+    height: 24px;
+
 }
 
 .social-icons a img:hover {
