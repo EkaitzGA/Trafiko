@@ -34,7 +34,13 @@ const TrafficIncidents = () => {
   });
 
   if (isLoading) {
-    return <div>Cargando incidencias...</div>;
+    return (
+      <div className="loader">
+        <div className="loader-circle"></div>
+        <div className="loader-circle"></div>
+        <div className="loader-circle"></div>
+      </div>
+    );
   }
 
   if (error) {

@@ -19,6 +19,7 @@ async function fetchIncidences(page) {
   };
 
   const data = await fetchData(searchParams);
+  console.log(data)
 
   //We only need the incidenceType, province, cause, cityTown and startDate
   const incidencesArray = data.incidences.map((incidence) => ({
@@ -27,7 +28,9 @@ async function fetchIncidences(page) {
     cause: incidence.cause,
     startDate: incidence.startDate,
     road: incidence.road,
-    direction: incidence.direction
+    direction: incidence.direction,
+    latitude: incidence.latitude,
+    longitude: incidence.longitude
   }));
 
   //Filter incidencesArray to only get the objects with province= Bizkaia or Bizkaia
@@ -60,6 +63,5 @@ export async function CleanedDataForIncidencesFromTheApiCall() {
 
 const apiDataClean = await CleanedDataForIncidencesFromTheApiCall();
 
-console.log(apiDataClean)
 
 
