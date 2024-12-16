@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {CleanedDataForIncidencesFromTheApiCall} from "./incidences-apiCall"
-import { Link } from 'react-router-dom'
 import "./incidence-styles.css"
+// Main Component to Fetch and Display Incidents
 // Main Component to Fetch and Display Incidents
 const TrafficIncidents = () => {
   const [incidents, setIncidents] = useState([]);
@@ -23,12 +23,14 @@ const TrafficIncidents = () => {
 
     fetchIncidentsData();
   }, []);
+
   const handleFilterChange = (filter) => {
     setFilter(filter);
   };
-  const filteredIncidents = incidents-filter((incident) => {
-    if(filter === "") return true;
-  return incident-incidenceType === filter;
+
+  const filteredIncidents = incidents.filter((incident) => {
+    if (filter === '') return true;
+    return incident.incidenceType === filter;
   });
 
   if (isLoading) {
@@ -41,17 +43,19 @@ const TrafficIncidents = () => {
 
   return (
     <section className="incidences-container">
-       <div className="button-container">
-                <button /* onClick={handleFetchData}  */className="fetch-button">
-                    Filtros de incidencias
-                </button>           
-        </div>
       <h1>Incidencias de Tráfico en Bizkaia</h1>
-      {incidents.length === 0 ? (
+      <div className="button-container">
+        <button className='boton-obras' onClick={() => handleFilterChange('Obras')}>Obras</button>
+        <button className='button-accidente' onClick={() => handleFilterChange('Accidente')}>Accidente</button>
+        <button className='button-seguridad-vial' onClick={() => handleFilterChange('Seguridad vial')}>Seguridad Vial</button>
+        <button className='button-otros' onClick={() => handleFilterChange('Otras incidencias')}>Otros</button>
+        <button className='button-todos' onClick={() => handleFilterChange('')}>Todos</button>
+      </div>
+      {filteredIncidents.length === 0 ? (
         <p>No hay incidencias</p>
       ) : (
         <div>
-          {incidents.map((incident, index) => (
+          {filteredIncidents.map((incident, index) => (
             <IncidentItem key={index} incident={incident} />
           ))}
         </div>
@@ -62,8 +66,8 @@ const TrafficIncidents = () => {
 
 // Individual Incident Item Component
 const IncidentItem = ({ incident }) => {
-//Take thhe incidenceType of the incident and save it in a const
-const className = incident.incidenceType.replace(/\s+/g, '-').toLowerCase(); 
+  //Take thhe incidenceType of the incident and save it in a const
+  const className = incident.incidenceType.replace(/\s+/g, '-').toLowerCase(); 
 
   return (
     <div className={`incident-card ${className}`}>

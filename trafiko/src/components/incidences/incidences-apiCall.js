@@ -60,4 +60,6 @@ export async function CleanedDataForIncidencesFromTheApiCall() {
 
 const apiDataClean = await CleanedDataForIncidencesFromTheApiCall();
 
+console.log(apiDataClean)
+
 
