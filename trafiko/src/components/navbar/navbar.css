@@ -1,27 +1,50 @@
+/* General reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.navBarContainer {
+header {
+    background-color: #f8f9fa; /* Color de fondo claro */
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content:space-between;
-    background-color: rgb(35, 31, 32);
-    padding: 1rem;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
-.navBar{
-    height: 100%;
-    padding-right: 3rem;
+
+header img {
+    height: 50px; /* Ajusta el tamaño del logo */
 }
-.navBarList {
+
+nav.navBar {
     display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    cursor: pointer;
-    list-style-type: none;
+    justify-content: flex-end;
+    flex: 1;
 }
-a{
-    color: lightgray;
-    text-decoration: none;
+
+ul.navBarList {
+    display: flex;
+    list-style: none; /* Elimina los bullets */
+    gap: 20px; /* Espacio entre los elementos */
 }
-a:hover{
-    color: lightblue;
+
+li.navBarAssets a {
+    text-decoration: none; /* Quita subrayado */
+    color: #007bff; /* Color azul para los enlaces */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+li.navBarAssets a:hover {
+    color: #0056b3; /* Color al pasar el ratón */
+    text-decoration: underline; /* Subrayado al hacer hover */
+}
+
+/* Para los ítems de navegación específicos */
+li.navBarAssets::marker {
+    color: #ff6347; /* Personaliza el marcador si es visible */
 }

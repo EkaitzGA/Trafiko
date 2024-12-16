@@ -4,14 +4,13 @@ import Button from './components/button/button'
 import Footer from './components/footer/footer'
 import Form from './components/form/form'
 import CameraMap from './components/cameras/cameras'
+import Incidencias from "./components/incidences/Incidences"
 import './App.css'
 
 export default function App() {
     return (
         <div>
-            <NavBar />
             <CameraMap />
-            <Footer />
         </div>
     )
 }

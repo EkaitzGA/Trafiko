@@ -43,7 +43,7 @@ async function fetchIncidences(page) {
 }
 
 
-async function CleanedDataForIncidencesFromTheApiCall() {
+export async function CleanedDataForIncidencesFromTheApiCall() {
   let finalResponse = []
   let page = 1;
 
@@ -59,6 +59,5 @@ async function CleanedDataForIncidencesFromTheApiCall() {
 }
 
 const apiDataClean = await CleanedDataForIncidencesFromTheApiCall();
-console.log(apiDataClean)
 
 
