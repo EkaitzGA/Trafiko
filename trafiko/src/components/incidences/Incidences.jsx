@@ -25,7 +25,10 @@ const TrafficIncidents = () => {
   const handleFilterChange = (filter) => {
     setFilter(filter);
   };
-  
+  const filteredIncidents = incidents-filter((incident) => {
+    if(filter === "") return true;
+  return incident-incidenceType === filter;
+  });
 
   if (isLoading) {
     return <div>Cargando incidencias...</div>;
