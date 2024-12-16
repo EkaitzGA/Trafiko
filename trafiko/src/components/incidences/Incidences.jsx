@@ -7,6 +7,7 @@ const TrafficIncidents = () => {
   const [incidents, setIncidents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     const fetchIncidentsData = async () => {
@@ -22,6 +23,13 @@ const TrafficIncidents = () => {
 
     fetchIncidentsData();
   }, []);
+  const handleFilterChange = (filter) => {
+    setFilter(filter);
+  };
+  const filteredIncidents = incidents-filter((incident) => {
+    if(filter === "") return true;
+  return incident-incidenceType === filter;
+  });
 
   if (isLoading) {
     return <div>Cargando incidencias...</div>;
@@ -54,8 +62,11 @@ const TrafficIncidents = () => {
 
 // Individual Incident Item Component
 const IncidentItem = ({ incident }) => {
+//Take thhe incidenceType of the incident and save it in a const
+const className = incident.incidenceType.replace(/\s+/g, '-').toLowerCase(); 
+
   return (
-    <div className="incident-card">
+    <div className={`incident-card ${className}`}>
       <h3>{incident.incidenceType}</h3>
       <p>Provincia: {incident.province}</p>
       <p>Causa: {incident.cause}</p>
