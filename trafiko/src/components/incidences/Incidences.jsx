@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {CleanedDataForIncidencesFromTheApiCall} from "./incidences-apiCall"
+import { Link } from 'react-router-dom'
 import "./incidence-styles.css"
 // Main Component to Fetch and Display Incidents
 const TrafficIncidents = () => {
@@ -40,6 +41,11 @@ const TrafficIncidents = () => {
 
   return (
     <section className="incidences-container">
+       <div className="button-container">
+                <button /* onClick={handleFetchData}  */className="fetch-button">
+                    Filtros de incidencias
+                </button>           
+        </div>
       <h1>Incidencias de Tráfico en Bizkaia</h1>
       {incidents.length === 0 ? (
         <p>No hay incidencias</p>

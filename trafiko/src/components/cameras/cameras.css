@@ -11,6 +11,9 @@
 
 .button-container {
   margin-bottom: 20px;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
 }
 
 .fetch-button {
@@ -24,6 +27,19 @@
 
 .fetch-button:hover {
   background-color: #2980b9;
+}
+
+.back-button {
+  margin-left: 15px;
+  transition: transform 0.3s ease;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.back-button:hover {
+  transform: scale(1.2);
 }
 
 .pagination-container {
