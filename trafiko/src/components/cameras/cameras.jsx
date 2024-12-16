@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { apiDataClean } from './apiCallCamera';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import CameraCarousel from '../carousel/carousel';
+import { Link } from 'react-router-dom';
 import './cameras.css';
 
 function CameraMap() {
@@ -108,7 +109,7 @@ function CameraMap() {
             <div className="button-container">
                 <button onClick={handleFetchData} className="fetch-button">
                     Mostrar cámaras de Bizkaia
-                </button>
+                </button>                
             </div>
 
             <div className="pagination-container">
