@@ -10,10 +10,7 @@ import './App.css'
 export default function App() {
     return (
         <div>
-            <NavBar />
             <CameraMap />
-            <Incidencias />
-            <Footer />
         </div>
     )
 }
