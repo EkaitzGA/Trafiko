@@ -5,7 +5,7 @@ import "./landing-page.css";
 const LandingPage = () => {
   return (
     <>
-      <h1>Bienvenidos a Trafiko</h1>
+      <h1>BIENVENIDOS A TRAFIKO</h1>
       <section className="main-page-section">
         <Link to="/cameras" className="image-container">
           <img

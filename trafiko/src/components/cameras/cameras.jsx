@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { apiDataClean } from './apiCallCamera';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import CameraCarousel from '../carousel/carousel';
-import { Link } from 'react-router-dom';
 import './cameras.css';
 
 function CameraMap() {
@@ -10,7 +9,23 @@ function CameraMap() {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedCamera, setSelectedCamera] = useState(null);
     const [showLargeImage, setShowLargeImage] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     const totalPages = 8;
+
+    useEffect(() => {
+        const fetchCameraData = async () => {
+            try {
+                const cleanedData = await apiDataClean(currentPage);
+                setCameraData(cleanedData);
+                setIsLoading(false);
+            } catch (err) {
+                setError(err);
+                setIsLoading(false);
+            }
+        };
+        fetchCameraData();
+    }, [currentPage]);
 
     const convertUTMtoLatLng = (northing, easting) => {
         try {
@@ -75,43 +90,33 @@ function CameraMap() {
         }
     };
 
-    const handleFetchData = async () => {
-        const data = await apiDataClean(currentPage);
-        setCameraData(data);
-        setSelectedCamera(null); // Limpiar la cámara seleccionada
-    };
-
-    const handleNextPage = async () => {
+    const handleNextPage = () => {
         if (currentPage < totalPages) {
-            const nextPage = currentPage + 1;
-            setCurrentPage(nextPage);
-            const data = await apiDataClean(nextPage);
-            setCameraData(data);
-            setSelectedCamera(null); // Limpiar la cámara seleccionada
+            setCurrentPage(currentPage + 1);
         }
-    };
+    }
 
-    const handlePreviousPage = async () => {
+    const handlePreviousPage = () => {
         if (currentPage > 1) {
-            const previousPage = currentPage - 1;
-            setCurrentPage(previousPage);
-            const data = await apiDataClean(previousPage);
-            setCameraData(data);
-            setSelectedCamera(null); // Limpiar la cámara seleccionada
+            setCurrentPage(currentPage - 1);
         }
-    };
+    }
+
+   
     const handleImageClick = (camera) => {
         setSelectedCamera(camera);
         setShowLargeImage(true);
     };
+
+    if (isLoading) {
+        return <div className='loading'>Cargando cámaras...</div>;
+    }
+
+    if (error){
+        return <div className="error">Error al cargar las cámaras: {error.message}</div>;
+    }
     return (
         <div className="cameras-container">
-            <div className="button-container">
-                <button onClick={handleFetchData} className="fetch-button">
-                    Mostrar cámaras de Bizkaia
-                </button>                
-            </div>
-
             <div className="pagination-container">
                 <button
                     onClick={handlePreviousPage}
@@ -120,7 +125,7 @@ function CameraMap() {
                 >
                     Página anterior
                 </button>
-                <span className="page-indicator">Página: {currentPage}/{totalPages}</span>
+                <span className="page-indicator"><b>Página: {currentPage}/{totalPages}</b></span>
                 {currentPage < totalPages && (
                     <button onClick={handleNextPage} className="pagination-button">
                         Siguiente página
@@ -156,6 +161,7 @@ function CameraMap() {
                         </div>
                     )}
                     <div className="map-container">
+                        <h2>Haz click sobre los marcadores del mapa para visualizar una cámara</h2>
                         <MapContainer
                             center={[43.26271, -2.92528]}
                             zoom={10}
