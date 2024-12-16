@@ -53,7 +53,7 @@ button{
 .incident-card-container{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     gap:1.2rem;
     justify-content:space-between;
 }
