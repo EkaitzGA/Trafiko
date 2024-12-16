@@ -33,18 +33,24 @@ ul.navBarList {
 
 li.navBarAssets a {
     text-decoration: none; /* Quita subrayado */
-    color: #007bff; /* Color azul para los enlaces */
+    color: #fcdb49; /* Color azul para los enlaces */
     font-weight: bold;
     font-size: 16px;
     transition: color 0.3s ease; /* Transición suave */
 }
 
 li.navBarAssets a:hover {
-    color: #0056b3; /* Color al pasar el ratón */
+    color: #cfab08; /* Color al pasar el ratón */
     text-decoration: underline; /* Subrayado al hacer hover */
 }
 
 /* Para los ítems de navegación específicos */
 li.navBarAssets::marker {
     color: #ff6347; /* Personaliza el marcador si es visible */
+}
+
+/* Items activos */
+li.navBarAssets a.active {
+    color: rgb(240, 236, 232); /* Color distintivo para el estado activo */
+    font-weight: bold;
 }

@@ -1,7 +1,7 @@
 /* Footer General */
 footer {
     background-color: #2c2c2c; /* Fondo oscuro */
-    color: #ffffff; /* Texto blanco */
+    color: rgb(240, 236, 232); /* Texto blanco */
     padding: 20px 0;
     font-family: Arial, sans-serif;
     font-size: 14px;
@@ -29,7 +29,7 @@ footer {
 .footer-section h4 {
     font-size: 18px;
     margin-bottom: 10px;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid #fcdb49;
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -42,13 +42,13 @@ footer {
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #ffffff;
+    color: rgb(240, 236, 232);
     transition: color 0.3s ease;
     
 }
 
 .footer-section ul li a:hover {
-    color: #007bff; /* Color al pasar el mouse */
+    color: #fcdb49; /* Color al pasar el mouse */
 }
 .social-icons{
     display: flex;
