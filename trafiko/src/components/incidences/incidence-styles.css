@@ -36,7 +36,7 @@ button{
     background-color: #888686;
 }
 .boton-seguridad-vial{
-    background-color: #f3bf8e;
+    background-color: #f08a2a;
 }
 .boton-otros{
     background-color: #007bff;
@@ -45,7 +45,7 @@ button{
     background-color: #fcdb49;
 }
 .boton-accidente{
-    background-color: #f56565;
+    background-color: #f74b4b;
 }
 
 
@@ -53,8 +53,9 @@ button{
 .incident-card-container{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    gap:3rem;
+    width: 90%;
+    gap:1.2rem;
+    justify-content:space-between;
 }
 /*.incident-card-container > *:only-child{
     width: 250px;
@@ -69,7 +70,7 @@ button{
 }
 
 .seguridad-vial{
-    border-left: 5px solid #f3bf8e;
+    border-left: 5px solid #f08a2a;
 }
 
 .otras-incidencias{
@@ -79,7 +80,7 @@ button{
     border-left: 5px solid #fcdb49;
 }
 .accidente{
-    border-left: 5px solid #f56565;
+    border-left: 5px solid #f74b4b;
 }
 .incident-card:hover {
     transform: translateY(-5px);

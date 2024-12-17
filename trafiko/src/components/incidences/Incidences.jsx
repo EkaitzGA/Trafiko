@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { CleanedDataForIncidencesFromTheApiCall } from "./incidences-apiCall";
 import "./incidence-styles.css";
-// Main Component to Fetch and Display Incidents
-// Main Component to Fetch and Display Incidents
+import Modal from "./Modal/Modal"
 const TrafficIncidents = () => {
   const [incidents, setIncidents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState("");
+  const [selectedIncident, setSelectedIncident] = useState(null);
 
   useEffect(() => {
     const fetchIncidentsData = async () => {
@@ -84,21 +84,35 @@ const TrafficIncidents = () => {
       ) : (
         <div className="incident-card-container">
           {filteredIncidents.map((incident, index) => (
-            <IncidentItem key={index} incident={incident} />
+            <IncidentItem 
+              key={index} 
+              incident={incident} 
+              onOpenModal={() => setSelectedIncident(incident)} 
+            />
           ))}
         </div>
+      )}
+
+      {/* Render modal if an incident is selected */}
+      {selectedIncident && (
+        <Modal 
+          incident={selectedIncident} 
+          onClose={() => setSelectedIncident(null)} 
+        />
       )}
     </section>
   );
 };
 
-// Individual Incident Item Component
-const IncidentItem = ({ incident }) => {
-  //Take thhe incidenceType of the incident and save it in a const
+// Modify IncidentItem to use onOpenModal prop
+const IncidentItem = ({ incident, onOpenModal }) => {
   const className = incident.incidenceType.replace(/\s+/g, "-").toLowerCase();
 
   return (
-    <div className={`incident-card ${className}`}>
+    <div 
+      className={`incident-card ${className}`} 
+      onClick={onOpenModal}
+    >
       <h3>{incident.incidenceType}</h3>
       <p>Provincia: {incident.province}</p>
       <p>Causa: {incident.cause}</p>
